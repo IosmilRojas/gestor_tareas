@@ -21,3 +21,8 @@ class TestGestorTareas(unittest.TestCase):
                 tarea.marcar_como_completada()
                 return
         raise ValueError("Tarea no encontrada")
+
+    def test_eliminar_tarea(self):
+        self.gestor.agregar_tarea("Tarea 1", "Descripción de la tarea 1")
+        self.gestor.eliminar_tarea("Tarea 1")
+        self.assertEqual(len(self.gestor.tareas), 0)
