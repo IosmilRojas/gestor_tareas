@@ -14,3 +14,10 @@ class TestGestorTareas(unittest.TestCase):
     def test_agregar_tarea_sin_titulo(self):
         with self.assertRaises(ValueError):
             self.gestor.agregar_tarea("", "Descripción")
+
+    def test_ver_tareas(self):
+        self.gestor.agregar_tarea("Tarea 1", "Descripción de la tarea 1")
+        tareas = self.gestor.ver_tareas()
+        self.assertEqual(len(tareas), 1)
+        self.assertEqual(tareas[0].titulo, "Tarea 1")
+        self.assertEqual(tareas[0].descripcion, "Descripción de la tarea 1")
