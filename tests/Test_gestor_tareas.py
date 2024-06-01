@@ -14,3 +14,10 @@ class TestGestorTareas(unittest.TestCase):
     def test_agregar_tarea_sin_titulo(self):
         with self.assertRaises(ValueError):
             self.gestor.agregar_tarea("", "Descripción")
+
+    def marcar_tarea_como_completada(self, titulo):
+        for tarea in self.tareas:
+            if tarea.titulo == titulo:
+                tarea.marcar_como_completada()
+                return
+        raise ValueError("Tarea no encontrada")
