@@ -22,3 +22,10 @@ class GestorTareas:
         self.gestor.agregar_tarea("Tarea 1", "Descripción de la tarea 1")
         self.gestor.marcar_tarea_como_completada("Tarea 1")
         self.assertTrue(self.gestor.tareas[0].completada)
+
+    def eliminar_tarea(self, titulo):
+        for tarea in self.tareas:
+            if tarea.titulo == titulo:
+                self.tareas.remove(tarea)
+                return
+        raise ValueError("Tarea no encontrada")
